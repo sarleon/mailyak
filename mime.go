@@ -78,7 +78,7 @@ func (m *MailYak) buildMimeWithBoundaries(mb, ab string) (*bytes.Buffer, error) 
 // plus any custom headers set via AddHeader().
 func (m *MailYak) writeHeaders(buf io.Writer) error {
 
-	if _, err := buf.Write([]byte(m.fromHeader())); err != nil {
+	if _, err := buf.Write([]byte("From: "+m.mimeFrom+"\r\n")); err != nil {
 		return err
 	}
 
