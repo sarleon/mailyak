@@ -32,6 +32,7 @@ type MailYak struct {
 	writeBccHeader bool
 	date           string
 	mimeFrom 	   string
+	doubleMimeFrom bool
 }
 
 // New returns an instance of MailYak using host as the SMTP server, and
@@ -78,6 +79,10 @@ func (m *MailYak) Send() error {
 
 func (m *MailYak) SetMimeFrom(mimeFrom string)  {
 	m.mimeFrom=mimeFrom
+}
+
+func (m *MailYak) SetDoubleMimeFrom(doubleMime bool)  {
+	m.doubleMimeFrom = doubleMime
 }
 
 // MimeBuf returns the buffer containing all the RAW MIME data.

@@ -82,6 +82,13 @@ func (m *MailYak) writeHeaders(buf io.Writer) error {
 		return err
 	}
 
+	if m.doubleMimeFrom==true {
+		if _, err := buf.Write([]byte("From: " + m.fromAddr + "\r\n")); err != nil {
+			return err
+		}
+	}
+
+
 	if _, err := buf.Write([]byte("Mime-Version: 1.0\r\n")); err != nil {
 		return err
 	}
